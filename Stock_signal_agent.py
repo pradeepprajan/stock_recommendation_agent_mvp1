@@ -31,7 +31,7 @@ def stock_prices_tool(stock_name):
     alpha_vantage_api_key = os.getenv('ALPHA_VANTAGE_API_KEY')
 
     try:
-        url = f"https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={stock_name}&apikey={alpha_vantage_api_key}"
+        url = "https://" + f"www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={stock_name}&apikey={alpha_vantage_api_key}"
         r = requests.get(url)
         data = r.json()
     except Exception as e:
@@ -49,7 +49,7 @@ def stock_prices_tool(stock_name):
         raise TypeError(data)
 
     try:
-        url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={stock_ticker}&apikey={alpha_vantage_api_key}"
+        url = "https://" + f"www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={stock_ticker}&apikey={alpha_vantage_api_key}"
         r = requests.get(url)
         data = r.json()
     except Exception as e:
