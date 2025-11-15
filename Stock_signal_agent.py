@@ -32,8 +32,8 @@ def stock_prices_tool(stock_name):
 
     try:
         url = "https://" + f"www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={stock_name}&apikey={alpha_vantage_api_key}"
+        print(url) 
         r = requests.get(url)
-        print(url)
         data = r.json()
     except Exception as e:
         print(f"Alpha Vantage API Error occurred: \n {e}")
