@@ -216,10 +216,19 @@ def stock_recommendation_agent_mvp1():
 
 if __name__ == "__main__":
     print("Running stock recommender agent")
-    stock_name = "Axis Bank"
     alpha_vantage_api_key = os.getenv('ALPHA_VANTAGE_API_KEY')
-    url = "https://" + f"www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={stock_name.replace(' ','%20')}&apikey={alpha_vantage_api_key}"
-    print(url)
+
+    #url = "https://" + f"www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={stock_name.re}&apikey={alpha_vantage_api_key}"
+    #print(url) 
+
+    try:
+        #url_stock_name = stock_name.replace(" ","%20")
+        url = "https://" + f"www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=Infosys&apikey={alpha_vantage_api_key}"
+        print(url) 
+        r = requests.get(url)
+        data = r.json()
+    except Exception as e:
+        print(f"Alpha Vantage API Error occurred: \n {e}")
     stock_recommendation_agent_mvp1()
 
 
