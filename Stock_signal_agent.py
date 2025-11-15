@@ -151,7 +151,7 @@ def stock_recommendation_agent_mvp1():
 
     llm = AzureChatOpenAI(
             openai_api_version=openai_version,
-            azure_endpoint="https://agileapps-azure-openai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2025-01-01-preview",
+            azure_endpoint="https://agileapps-azure-openai.openai.azure.com/",
             openai_api_key=openai_api_key
     )
 
