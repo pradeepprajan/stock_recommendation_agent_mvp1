@@ -227,6 +227,7 @@ if __name__ == "__main__":
         print(url) 
         r = requests.get(url)
         data = r.json()
+        print(data)
     except Exception as e:
         print(f"Alpha Vantage API Error occurred: \n {e}")
     stock_recommendation_agent_mvp1()
