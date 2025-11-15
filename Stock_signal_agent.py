@@ -163,6 +163,11 @@ def stock_recommendation_agent_mvp1():
     }"""}
     ]
 
+    stock_name = "Axis Bank"
+    alpha_vantage_api_key = os.getenv('ALPHA_VANTAGE_API_KEY')
+    url = "https://" + f"www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={stock_name}&apikey={alpha_vantage_api_key}"
+    print(url)
+
     blue_chip_stock_list = []
     try:
         output = llm.invoke(messages)
@@ -177,10 +182,7 @@ def stock_recommendation_agent_mvp1():
     ai_msg_content = "Here are some stock trading recommendations for today: \n\n"
     for stock_name in blue_chip_stock_list[:1]:
         print(f"Stock name: {stock_name}")
-        alpha_vantage_api_key = os.getenv('ALPHA_VANTAGE_API_KEY')
-
-        url = "https://" + f"www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={stock_name}&apikey={alpha_vantage_api_key}"
-        print(url)
+    
         messages = [
         {"role": "system", "content": """You are a financial advisor capable to 
         recommending stocks to buy or sell. Your task is to fetch five articles and last 100 days stock prices regarding {stock_name} using the tools 
