@@ -30,11 +30,11 @@ def stock_prices_tool(stock_name):
 
     alpha_vantage_api_key = os.getenv('ALPHA_VANTAGE_API_KEY')
 
-    url = "https://" + f"www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={stock_name}&apikey={alpha_vantage_api_key}"
-    print(url) 
+    #url = "https://" + f"www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={stock_name.re}&apikey={alpha_vantage_api_key}"
+    #print(url) 
 
     try:
-        url = "https://" + f"www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={stock_name}&apikey={alpha_vantage_api_key}"
+        url = "https://" + f"www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={stock_name.replace(" ","_")}&apikey={alpha_vantage_api_key}"
         print(url) 
         r = requests.get(url)
         data = r.json()
@@ -163,10 +163,10 @@ def stock_recommendation_agent_mvp1():
     }"""}
     ]
 
-    stock_name = "Axis Bank"
-    alpha_vantage_api_key = os.getenv('ALPHA_VANTAGE_API_KEY')
-    url = "https://" + f"www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={stock_name}&apikey={alpha_vantage_api_key}"
-    print(url)
+    #stock_name = "Axis Bank"
+    #alpha_vantage_api_key = os.getenv('ALPHA_VANTAGE_API_KEY')
+    #url = "https://" + f"www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={stock_name}&apikey={alpha_vantage_api_key}"
+    #print(url)
 
     blue_chip_stock_list = []
     try:
@@ -215,10 +215,10 @@ def stock_recommendation_agent_mvp1():
 
 if __name__ == "__main__":
     print("Running stock recommender agent")
-    stock_name = "Axis Bank"
-    alpha_vantage_api_key = os.getenv('ALPHA_VANTAGE_API_KEY')
-    url = "https://" + f"www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={stock_name}&apikey={alpha_vantage_api_key}"
-    print(url)
+    #stock_name = "Axis Bank"
+    #alpha_vantage_api_key = os.getenv('ALPHA_VANTAGE_API_KEY')
+    #url = "https://" + f"www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={stock_name}&apikey={alpha_vantage_api_key}"
+    #print(url)
     stock_recommendation_agent_mvp1()
 
 
