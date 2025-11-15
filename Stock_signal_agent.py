@@ -171,7 +171,7 @@ def stock_recommendation_agent_mvp1():
         raise TypeError(f"Error occured while fetching list of blue chip stocks: {e}")
 
     ai_msg_content = "Here are some stock trading recommendations for today: \n\n"
-    for stock_name in blue_chip_stock_list[:1]:
+    for stock_name in blue_chip_stock_list:
         print(f"Stock name: {stock_name}")
     
         messages = [
