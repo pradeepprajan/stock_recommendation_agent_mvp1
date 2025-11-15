@@ -29,14 +29,10 @@ def stock_prices_tool(stock_name):
     """Function to fetch stock prices from Alpha Vantage"""
 
     alpha_vantage_api_key = os.getenv('ALPHA_VANTAGE_API_KEY')
-
-    #url = "https://" + f"www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={stock_name.re}&apikey={alpha_vantage_api_key}"
-    #print(url) 
+ 
 
     try:
-        #url_stock_name = stock_name.replace(" ","%20")
         url = "https://" + f"www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={stock_name.replace(' ','%20')}&apikey={alpha_vantage_api_key}"
-        print(url) 
         r = requests.get(url)
         data = r.json()
     except Exception as e:
@@ -105,9 +101,6 @@ def financial_news_tool(stock_name):
         article_list = []
         # change maxItems to get the number of results that you want
         for i,article in enumerate(q.execQuery(er, maxItems=5)):
-            #print(f'Article {i+1}')
-            #print(article['title'])
-            #print(article['body'])
             title = article['title']
             body = article['body']
             article = '\n\n'.join([title,body])
@@ -140,18 +133,15 @@ def send_email(output):
 
 
 def stock_recommendation_agent_mvp1():
-    #stock_name = input("Enter the stock that you want to get buy or sell recommendation")
-    
-    #alpha_vantage_api_key = os.getenv('ALPHA_VANTAGE_API_KEY')
-    #newsapi_api_key = os.getenv("NEWSAPI_API_KEY")
+
     openai_endpoint = os.getenv("OPENAI_API_ENDPOINT")
     openai_api_key = os.getenv("OPENAI_API_KEY")
     openai_deployment = os.getenv("OPENAI_API_DEPLOYMENT")
     openai_version = os.getenv("OPENAI_API_VERSION")
 
     llm = AzureChatOpenAI(
-            openai_api_version='2025-01-01-preview',
-            azure_endpoint='https://agileapps-azure-openai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2025-01-01-preview',
+            openai_api_version=openai_version,
+            azure_endpoint=openai_endpoint,
             openai_api_key=openai_api_key
     )
 
