@@ -35,7 +35,7 @@ def stock_prices_tool(stock_name):
 
     try:
         #url_stock_name = stock_name.replace(" ","%20")
-        url = "https://" + f"www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=Infosys&apikey={alpha_vantage_api_key}"
+        url = "https://" + f"www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={stock_name.replace(' ','%20')}&apikey={alpha_vantage_api_key}"
         print(url) 
         r = requests.get(url)
         data = r.json()
@@ -86,7 +86,7 @@ def financial_news_tool(stock_name):
           "$query": {
             "$and": [
               {
-                "keyword": "Infosys",
+                "keyword": stock_name,
                 "keywordLoc": "title"
               },
               {
@@ -151,7 +151,7 @@ def stock_recommendation_agent_mvp1():
 
     llm = AzureChatOpenAI(
             openai_api_version=openai_version,
-            azure_endpoint=openai_endpoint,
+            azure_endpoint="https://agileapps-azure-openai.openai.azure.com/openai/deployments/gpt-4o-mini/chat/completions?api-version=2025-01-01-preview",
             openai_api_key=openai_api_key
     )
 
@@ -217,19 +217,6 @@ def stock_recommendation_agent_mvp1():
 if __name__ == "__main__":
     print("Running stock recommender agent")
     alpha_vantage_api_key = os.getenv('ALPHA_VANTAGE_API_KEY')
-
-    #url = "https://" + f"www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={stock_name.re}&apikey={alpha_vantage_api_key}"
-    #print(url) 
-
-    try:
-        #url_stock_name = stock_name.replace(" ","%20")
-        url = "https://" + f"www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=Infosys&apikey={alpha_vantage_api_key}"
-        print(url) 
-        r = requests.get(url)
-        data = r.json()
-        print(data)
-    except Exception as e:
-        print(f"Alpha Vantage API Error occurred: \n {e}")
     stock_recommendation_agent_mvp1()
 
 
