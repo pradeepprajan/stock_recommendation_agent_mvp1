@@ -86,7 +86,7 @@ def financial_news_tool(stock_name):
           "$query": {
             "$and": [
               {
-                "keyword": stock_name,
+                "keyword": "Axis Bank",
                 "keywordLoc": "title"
               },
               {
