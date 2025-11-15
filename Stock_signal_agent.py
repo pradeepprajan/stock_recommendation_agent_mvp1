@@ -34,7 +34,8 @@ def stock_prices_tool(stock_name):
     #print(url) 
 
     try:
-        url = "https://" + f"www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={stock_name.replace(" ","_")}&apikey={alpha_vantage_api_key}"
+        url_stock_name = stock_name.replace(" ","_")
+        url = "https://" + f"www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={url_stock_name}&apikey={alpha_vantage_api_key}"
         print(url) 
         r = requests.get(url)
         data = r.json()
