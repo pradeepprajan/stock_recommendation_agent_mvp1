@@ -30,6 +30,9 @@ def stock_prices_tool(stock_name):
 
     alpha_vantage_api_key = os.getenv('ALPHA_VANTAGE_API_KEY')
 
+    url = "https://" + f"www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={stock_name}&apikey={alpha_vantage_api_key}"
+    print(url) 
+
     try:
         url = "https://" + f"www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={stock_name}&apikey={alpha_vantage_api_key}"
         print(url) 
