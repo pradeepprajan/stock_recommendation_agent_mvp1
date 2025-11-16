@@ -207,7 +207,6 @@ def stock_recommendation_agent_mvp1():
 
 if __name__ == "__main__":
     print("Running stock recommender agent")
-    alpha_vantage_api_key = os.getenv('ALPHA_VANTAGE_API_KEY')
     stock_recommendation_agent_mvp1()
 
 
