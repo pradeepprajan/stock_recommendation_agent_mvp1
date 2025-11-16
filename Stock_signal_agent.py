@@ -100,7 +100,7 @@ def financial_news_tool(stock_name):
         q = QueryArticlesIter.initWithComplexQuery(query)
         article_list = []
         # change maxItems to get the number of results that you want
-        for i,article in enumerate(q.execQuery(er, maxItems=5)):
+        for i,article in enumerate(q.execQuery(er, maxItems=10)):
             title = article['title']
             body = article['body']
             article = '\n\n'.join([title,body])
@@ -177,7 +177,7 @@ def stock_recommendation_agent_mvp1():
     
         messages = [
         {"role": "system", "content": """You are a financial advisor capable of recommending stocks to buy or sell."""},
-        {"role": "user", "content" : """Your task is to fetch five articles and last 100 days stock prices regarding {stock_name} using the tools 
+        {"role": "user", "content" : """Your task is to fetch ten articles and last 100 days stock prices regarding {stock_name} using the tools 
         and analyze the articles to predict whether the stock prices of {stock_name} will move in a bullish or 
         bearish manner and give recommendation on whether to buy or sell stock."""},
         MessagesPlaceholder("agent_scratchpad")
