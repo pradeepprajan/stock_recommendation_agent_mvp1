@@ -147,7 +147,8 @@ def stock_recommendation_agent_mvp1():
 
     # Getting a random list of blue chip stocks in BSE
     messages = [
-    {"role": "system", "content": """Can you recommend some good blue chip stocks in BSE? Return the output as a JSON object with the expected format below.
+    {"role": "system", "content": """You are a financial advisor capable of recommending stocks to buy or sell."""},
+    {"role": "user", "content": """Can you recommend some good blue chip stocks in BSE? Return the output as a JSON object with the expected format below.
     **Expected format**: 
     {
     "blue_chip_stocks": ['Tata Motors','Axis Bank','ICICI Bank']
@@ -175,8 +176,8 @@ def stock_recommendation_agent_mvp1():
         print(f"Stock name: {stock_name}")
     
         messages = [
-        {"role": "system", "content": """You are a financial advisor capable to 
-        recommending stocks to buy or sell. Your task is to fetch five articles and last 100 days stock prices regarding {stock_name} using the tools 
+        {"role": "system", "content": """You are a financial advisor capable of recommending stocks to buy or sell."""},
+        {"role": "user", "content" : """Your task is to fetch five articles and last 100 days stock prices regarding {stock_name} using the tools 
         and analyze the articles to predict whether the stock prices of {stock_name} will move in a bullish or 
         bearish manner and give recommendation on whether to buy or sell stock."""},
         MessagesPlaceholder("agent_scratchpad")
