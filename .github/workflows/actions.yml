@@ -1,9 +1,8 @@
 name: run Stock_signal_agent.py
 
 on:
-  workflow_dispatch:
   schedule:
-    - cron: '0 8 * * 1-5' # At 08:00 everyday
+    - cron: '0 11 * * 1-5' # At 08:00 everyday
 
 jobs:
   build:
