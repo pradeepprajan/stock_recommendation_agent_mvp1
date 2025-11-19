@@ -2,7 +2,7 @@ name: run Stock_signal_agent.py
 
 on:
   schedule:
-    - cron: '5 11 * * 1-5' # At 08:00 everyday
+    - cron: '25 6 * * 1-5' # At 08:00 everyday
 
 jobs:
   build:
