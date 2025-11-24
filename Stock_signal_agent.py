@@ -50,15 +50,18 @@ def stock_prices_tool(stock_name):
         raise TypeError(data)
 
     try:
-        url = "https://" + f"www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={stock_ticker}&apikey={alpha_vantage_api_key}"
-        r = requests.get(url)
-        data = r.json()
+        try:
+            url = "https://" + f"www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={stock_ticker}&apikey={alpha_vantage_api_key}"
+            r = requests.get(url)
+            data = r.json()
+        except Exception as e:
+            print(f"Alpha Vantage API Error occurred: \n {e}")
+        
+        #print(len(data['Time Series (Daily)']))
+        #print(data)
+        stock_prices_json = data['Time Series (Daily)']
     except Exception as e:
-        print(f"Alpha Vantage API Error occurred: \n {e}")
-    
-    #print(len(data['Time Series (Daily)']))
-    print(data)
-    stock_prices_json = data['Time Series (Daily)']
+        raise TypeError(data)
 
     stock_prices_df = pd.DataFrame(stock_prices_json).T
     stock_prices_df.rename(columns={'1. open':'open','2. high':'high','3. low':'low','4. close':'close','5. volume':'volume'},inplace=True)
