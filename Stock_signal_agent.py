@@ -57,7 +57,7 @@ def stock_prices_tool(stock_name):
         print(f"Alpha Vantage API Error occurred: \n {e}")
     
     #print(len(data['Time Series (Daily)']))
-    
+    print(data)
     stock_prices_json = data['Time Series (Daily)']
 
     stock_prices_df = pd.DataFrame(stock_prices_json).T
