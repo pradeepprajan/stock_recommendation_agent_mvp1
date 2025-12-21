@@ -22,7 +22,7 @@ from datetime import date
 
 load_dotenv()
 
-
+alpha_vantage_api_request_count = 0
 @tool
 def stock_prices_tool(stock_name):
 
@@ -35,6 +35,7 @@ def stock_prices_tool(stock_name):
         url = "https://" + f"www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={stock_name.replace(' ','%20')}&apikey={alpha_vantage_api_key}"
         r = requests.get(url)
         data = r.json()
+        alpha_vantage_api_request_count += 1
     except Exception as e:
         print(f"Alpha Vantage API Error occurred: \n {e}")
         
@@ -54,6 +55,7 @@ def stock_prices_tool(stock_name):
             url = "https://" + f"www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={stock_ticker}&apikey={alpha_vantage_api_key}"
             r = requests.get(url)
             data = r.json()
+            alpha_vantage_api_request_count += 1
         except Exception as e:
             print(f"Alpha Vantage API Error occurred: \n {e}")
         
@@ -210,7 +212,12 @@ def stock_recommendation_agent_mvp1():
 
 if __name__ == "__main__":
     print("Running stock recommender agent")
-    stock_recommendation_agent_mvp1()
+    try:
+        stock_recommendation_agent_mvp1()
+    except Exception as e:
+        print(f"Error occured during execution: {e}")
+
+    print(f"Number of times alpha vantage API is called {alpha_vantage_api_request_count}")
 
 
 
