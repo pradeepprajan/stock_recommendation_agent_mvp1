@@ -30,6 +30,7 @@ def stock_prices_tool(stock_name):
     """Function to fetch stock prices from Alpha Vantage"""
 
     alpha_vantage_api_key = os.getenv('ALPHA_VANTAGE_API_KEY')
+    global alpha_vantage_api_request_count
  
 
     try:
