@@ -17,6 +17,7 @@ import smtplib
 from email.message import EmailMessage
 import ast
 from datetime import date
+import time
 
 
 
@@ -50,6 +51,8 @@ def stock_prices_tool(stock_name):
     except Exception as e:
         raise TypeError(data)
 
+    time.sleep(5)
+
     try:
         try:
             url = "https://" + f"www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={stock_ticker}&apikey={alpha_vantage_api_key}"
@@ -64,6 +67,8 @@ def stock_prices_tool(stock_name):
         stock_prices_json = data['Time Series (Daily)']
     except Exception as e:
         raise TypeError(data)
+
+    time.sleep(5)
 
     stock_prices_df = pd.DataFrame(stock_prices_json).T
     stock_prices_df.rename(columns={'1. open':'open','2. high':'high','3. low':'low','4. close':'close','5. volume':'volume'},inplace=True)
