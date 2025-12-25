@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 from eventregistry import *
-from langchain.tools import tools
+from langchain_core.tools import tool
 load_dotenv()
 
 @tool

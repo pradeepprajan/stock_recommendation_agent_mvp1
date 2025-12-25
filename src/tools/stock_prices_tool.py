@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 import pandas as pd
 import requests
-from langchain.tools import tool
+from langchain_core.tools import tool
 import time
 load_dotenv()
 

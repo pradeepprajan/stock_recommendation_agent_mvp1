@@ -1,9 +1,9 @@
-from llm.llm_client import llm_client as llm
+from llm.llm_client import llm_client
 from eventregistry import *
 from langchain.agents import create_tool_calling_agent, AgentExecutor
 from tools.stock_prices_tool import stock_prices_tool
 from tools.financial_news_tool import financial_news_tool
-from email.send_email import send_email
+from my_email.send_email import send_email
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 import ast
 
@@ -20,6 +20,7 @@ def stock_recommendation_agent_mvp1():
     }"""}
     ]
 
+    llm = llm_client()
     blue_chip_stock_list = []
     try:
         output = llm.invoke(messages)
