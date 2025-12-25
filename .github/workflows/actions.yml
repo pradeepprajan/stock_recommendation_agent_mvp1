@@ -1,4 +1,4 @@
-name: run Stock_signal_agent.py
+name: run main.py
 
 on:
   workflow_dispatch:
